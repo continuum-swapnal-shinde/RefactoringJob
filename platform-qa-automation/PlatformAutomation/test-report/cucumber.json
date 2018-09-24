@@ -1,0 +1,229 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 81123512,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonSteps.readScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 15,
+        "name": "Verify Agent Microservice is able to push messages in Webroot Plugin Kafka Topic-C3621661",
+        "description": "",
+        "id": "webroot-plugin-scenarios;verify-agent-microservice-is-able-to-push-messages-in-webroot-plugin-kafka-topic-c3621661;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 2172609,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CommonSteps.cleanup()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "output": [
+              "\u003cfont color\u003d\"blue\"\u003e\u003cb\u003eConnection Establish for : 10.2.114.113:22\u003c/b\u003e\u003c/font\u003e\u003cbr/\u003e"
+            ],
+            "result": {
+              "duration": 982364581,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "SSH connection establishes with remote test machine from tag",
+            "match": {
+              "location": "CommonSteps.sshConnectionEstablishedWithRemoteTestMachineFromTag()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "output": [
+              "Webroot Kafka Topic consumer started with GROUP : juno-agent-webroot-group-gmdeeyqfya"
+            ],
+            "result": {
+              "duration": 28618325747,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "User Starts Webroot Consumer Topic",
+            "match": {
+              "location": "KafkaStep.user_starts_webroot_result_consumer_topic()"
+            },
+            "keyword": "When "
+          },
+          {
+            "output": [
+              "\u003cfont color\u003d\"blue\"\u003e\u003cb\u003eEndPoint ID is 69c21305-4a58-4433-a968-19120bb58afc\u003c/b\u003e\u003c/font\u003e\u003cbr/\u003e"
+            ],
+            "result": {
+              "duration": 266018327,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User fetch AgentCore EndPointID from agentCore config file from tag",
+            "match": {
+              "location": "CommonSteps.i_fetch_AgentCore_EndPointID_from_agentCore_config_file_from_tag()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "output": [
+              "I send a Post request for URL https://integration.agent.exec.itsupport247.net/agent/v1/69c21305-4a58-4433-a968-19120bb58afc/webroot",
+              "Json format used for post :\"{\\\"timestampUTC\\\": \\\"2018-09-23T23:54:50.580Z\\\",\\\"status\\\":{\\\"installed\\\": \\\"true\\\", \\\"running\\\" : \\\"true\\\",\\\"agentVersion\\\": \\\"1.0.383.0\\\",\\\"agentMachineID\\\": \\\"f4701f7f-51a9-496f-a907-510a1fd8fb73\\\",\\\"activeThreats\\\": \\\"0\\\"},\\\"messageType\\\": \\\"status\\\"}\""
+            ],
+            "result": {
+              "duration": 11073124955,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User send a Post request for webroot plugin as \"/agent/v1/EndPointID/webroot\" and \"deepScan\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "/agent/v1/EndPointID/webroot",
+                  "offset": 48
+                },
+                {
+                  "val": "deepScan",
+                  "offset": 83
+                }
+              ],
+              "location": "ScriptingPluginStep.i_send_a_Post_request_for_webroot_plugin_as(String,String)"
+            },
+            "matchedColumns": [
+              1,
+              3
+            ],
+            "keyword": "When "
+          },
+          {
+            "output": [
+              "Status OK"
+            ],
+            "result": {
+              "duration": 31901138,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "User should validate the status code as \"200\"OK",
+            "match": {
+              "arguments": [
+                {
+                  "val": "200",
+                  "offset": 41
+                }
+              ],
+              "location": "CommonSteps.i_should_validate_the_status_code_as_OK(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "output": [
+              "Webroot Kafka Topic Consumer is stopped now.."
+            ],
+            "result": {
+              "duration": 100167242425,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "User Stops Webroot Consumer Topic and Fetch Data",
+            "match": {
+              "location": "KafkaStep.user_stops_webroot_consumer_topic_and_fetch_data()"
+            },
+            "keyword": "When "
+          },
+          {
+            "output": [
+              "Webroot Kafka Topic Data for Agent Machine ID : f4701f7f-51a9-496f-a907-510a1fd8fb73 -\u003e{\"timestampUTC\": \"2018-09-23T23:54:50.580Z\",\"status\":{\"installed\": \"true\", \"running\" : \"true\",\"agentVersion\": \"1.0.383.0\",\"agentMachineID\": \"f4701f7f-51a9-496f-a907-510a1fd8fb73\",\"activeThreats\": \"0\"},\"messageType\": \"status\"}"
+            ],
+            "result": {
+              "duration": 4997825,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "User Validate the Data fetch from the Webroot kafka topic as \"deepScan\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "deepScan",
+                  "offset": 62
+                }
+              ],
+              "location": "KafkaStep.i_validate_the_data_fetch_from_the_webroot_kafka_topic(String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@PlatformRegression777"
+          },
+          {
+            "line": 3,
+            "name": "@Win10_64Bit"
+          },
+          {
+            "line": 3,
+            "name": "@WinServer12_64Bit"
+          },
+          {
+            "line": 3,
+            "name": "@Win8.1_32Bit"
+          },
+          {
+            "line": 3,
+            "name": "@WinServer8_64Bit"
+          },
+          {
+            "line": 3,
+            "name": "@Win7_64Bit"
+          },
+          {
+            "line": 3,
+            "name": "@Win8_64Bit"
+          },
+          {
+            "line": 3,
+            "name": "@Win7_32Bit"
+          },
+          {
+            "line": 3,
+            "name": "@WinServer12R2_64Bit"
+          },
+          {
+            "line": 3,
+            "name": "@Win10_32Bit"
+          },
+          {
+            "line": 3,
+            "name": "@WinServer16_64Bit"
+          },
+          {
+            "line": 3,
+            "name": "@Win8_32Bit"
+          }
+        ]
+      }
+    ],
+    "name": "Webroot Plugin Scenarios",
+    "description": "",
+    "id": "webroot-plugin-scenarios",
+    "keyword": "Feature",
+    "uri": "platform/WebrootPlugin.feature"
+  }
+]
